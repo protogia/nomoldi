@@ -3,11 +3,11 @@
 ## description/idea
 The Idea is about measuring humidity and temperature in a room to calculate the dewpoint. Depending to the dewpoint the µC calculates a critical tempereature to prevent mold creation. To indicate if its better to ventilate or to heat the room. 
 
-## used project-hardaware
+### used project-hardaware
 - microcontroller: Atmega8-16pu
 - sensor: DHT22  
 
-## wiring for programming/flashing
+### wiring for programming/flashing
 
 | AVRISP2 Pin | ATmega8-16PU Pin | 
 |-------------|-------------------|
@@ -22,14 +22,21 @@ The Idea is about measuring humidity and temperature in a room to calculate the 
 
 ## compile & and upload
 
-### using make
+### pre/dependencies
+
+To install avr-compiler and avr-libs
+```bash
+sudo apt install gcc-avr avr-libc avrdude -y
+```
+
+### compile using make
 
 ```bash
 make
 make flash
 ```
 
-### or manually
+### or compile manually
 
 ```bash
 # create .elf
@@ -40,7 +47,7 @@ avr-objcopy -j .text -j .data -O ihex main.elf main.hex
 avrdude -p m8 -c avrisp2 -e -U flash:w:main.hex 
 ```
 
-## wiring in production
+## wiring in production (disconnected programmer)
 
 | ATmega8-16PU Pin | DHT22 Pin | Description         |
 |-------------------|-----------|---------------------|
